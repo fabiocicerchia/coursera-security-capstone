@@ -3,7 +3,11 @@
     "type": "project",
     "require": {
 	"php": "^7.3.0",
-        "ext-pdo_pgsql": "*"
+        "ext-pdo_pgsql": "*",
+        "ext-curl": "*",
+        "ext-zip": "*",
+        "bjeavons/zxcvbn-php": "^0.4.0",
+        "swiftmailer/swiftmailer": "^6.2"
     },
     "license": "MIT",
     "authors": [
@@ -12,5 +16,13 @@
             "email": "info@fabiocicerchia.it"
         }
     ],
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "require-dev": {
+        "pheromone/phpcs-security-audit": "^2.0"
+    },
+    "scripts": {
+        "sast": [
+	   "./vendor/squizlabs/php_codesniffer/bin/phpcs --standard=./vendor/pheromone/phpcs-security-audit/example_base_ruleset.xml ./public/*.php"
+	]
+    }
 }
